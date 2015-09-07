@@ -10,7 +10,7 @@ $tmpl = <<TMPL
     <h1><a href="https://github.com/kyanny/playground">https://github.com/kyanny/playground</a></h1>
     <ul>
       <% for dir in dirs -%>
-      <li><a href="/<%= dir %>/"><%= dir %></a></li>
+      <li><a href="./<%= dir %>/"><%= dir %></a></li>
       <% end -%>
     </ul>
   </body>
