@@ -1,0 +1,23 @@
+require 'dragonfly'
+
+Dragonfly.app.configure do
+  verify_urls false
+end
+
+desc "GET"
+task :get do
+  url = File.read("URL.txt")
+  command = "curl -i #{url}"
+  puts "==> #{command}"
+  puts ""
+  system command
+end
+
+desc "PUT"
+task :put do
+  uid = Dragonfly.app.store(File.read("LICENSE"), name: 'LICENSE')
+  job = Dragonfly.app.fetch(uid)
+  url = "http://localhost:9292#{job.url}"
+  File.write("URL.txt", url)
+  puts url
+end
