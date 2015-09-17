@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# Usage: ./thumb.rb
 require 'dragonfly'
 Dragonfly.app.configure do
   plugin :imagemagick
