@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# Usage: ./put.rb hello.txt
+# Usage: ./put.rb
 require 'dragonfly'
-uid = Dragonfly.app.store(File.open(ARGV[0]))
+uid = Dragonfly.app.store(File.open('hello.txt'))
 puts uid
