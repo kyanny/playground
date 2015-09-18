@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script>
+     var app1 = angular.module('myApp1', []);
+     app1.controller('myController1', function() {
+       this.name = 'Hello';
+     });
+     var app2 = angular.module('myApp2', []);
+     app2.controller('myController2', function() {
+       this.name = 'Goodbye';
+     });
+    </script>
+  </head>
+  <body>
+    <div ng-app="myApp1">
+      <div ng-controller="myController1 as myCtrl1">
+        {{myCtrl1.name|uppercase}}
+      </div>
+    </div>
+    <div ng-app="myApp2">
+      <div ng-controller="myController2 as myCtrl2">
+        {{myCtrl2.name}}
+      </div>
+    </div>
+  </body>
+</html>
