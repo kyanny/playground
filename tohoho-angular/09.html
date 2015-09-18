@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script>
+    </script>
+  </head>
+  <body>
+    <form name="myForm" novalidate>
+      <div><input type="text" name="text1" ng-model="sampleText" ng-required="true" ng-minlength="3" ng-maxlength="8"></div>
+      <div ng-show="myForm.text1.$error.required">Required!</div>
+      <div ng-show="myForm.text1.$error.minlength">Too short!</div>
+      <div ng-show="myForm.text1.$error.maxlength">Too long!</div>
+    </form>
+  </body>
+</html>
