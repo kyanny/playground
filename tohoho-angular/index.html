@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <title>Playground: Trying Tohoho no AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.0.3/sprintf.min.js"></script>
+    <script>
+     var app = angular.module('myApp', []);
+     app.controller('myController', function($scope) {
+       $scope.nums = [];
+       for (var i = 1; i <= 11; i++) {
+         $scope.nums.push(sprintf("%02d", i));
+       }
+       $scope.nums.push("x01");
+     });
+    </script>
+  </head>
+  <body>
+    <h1>Playground: Trying Tohoho no AngularJS</h1>
+    <div ng-controller="myController">
+      <ul>
+        <li ng-repeat="num in nums">
+          <a href="./{{num}}.html">./{{num}}.html</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
