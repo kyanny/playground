@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app>
+  <head>
+    <style>
+     span { background-color: #eee }
+     div {
+       border: 1px solid #000;
+       width: 200px;
+       height: 200px;
+     }
+     .active { background-color: #ccc }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  </head>
+  <body ng-init="tab = 1">
+    <span ng-click="tab = 1" ng-class="{ active: tab === 1 }">Tab 1</span>
+    <span ng-click="tab = 2" ng-class="{ active: tab === 2 }">Tab 2</span>
+    <span ng-click="tab = 3" ng-class="{ active: tab === 3 }">Tab 3</span>
+    <div ng-show="tab === 1">
+      Content 1
+    </div>
+    <div ng-show="tab === 2">
+      Content 2
+    </div>
+    <div ng-show="tab === 3">
+      Content 3
+    </div>
+  </body>
+</html>
