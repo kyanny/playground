@@ -9,9 +9,16 @@ task :default do
   sh "curl localhost:9393/h -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
   sh "curl localhost:9393/i -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
   sh "curl localhost:9393/j -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
+  sh "curl localhost:9393/j2 -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
+  sh "curl localhost:9393/j3 -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
   sh "curl localhost:9393/k --data-urlencode hello=world! -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
   sh "curl localhost:9393/l -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
   sh "curl localhost:9393/m -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
+
+  sh "curl localhost:9393/x/a -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
+  sh "curl localhost:9393/x/b -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
+  sh "curl localhost:9393/x/c -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
+  sh "curl localhost:9393/x/d -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
 
   puts '-' * 80
   puts ''

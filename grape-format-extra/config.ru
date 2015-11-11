@@ -84,6 +84,23 @@ class TwitterAPI < Grape::API
     end
   end
 
+  # more simple final version
+  resource 'j2' do
+    content_type :csv, 'text/csv'
+    default_format :csv
+    post '/' do
+      body "hello,#{params.hello},#{env['rack.input'].read}"
+    end
+  end
+
+  # most simple final version
+  resource 'j3' do
+    post '/' do
+      content_type 'text/csv'
+      body "hello,#{params.hello},#{env['rack.input'].read}"
+    end
+  end
+
   # same to `j' but request parameter is different
   resource 'k' do
     content_type :csv, 'text/csv'
@@ -121,6 +138,43 @@ class TwitterAPI < Grape::API
     post '/' do
       content_type 'text/csv'
       { hello: params.hello, postdata: env['rack.input'].read }
+    end
+  end
+
+  resource 'x' do
+    format :json
+    default_format :json
+
+    resource 'a' do
+      content_type :txt, 'text/plain'
+      format :txt
+      post '/' do
+        { hello: params.hello, postdata: env['rack.input'].read }
+      end
+    end
+
+    resource 'b' do
+      content_type :txt, 'text/plain'
+      default_format :txt
+      post '/' do
+        { hello: params.hello, postdata: env['rack.input'].read }
+      end
+    end
+
+    resource 'c' do
+      content_type :binary, 'application/octet-stream'
+      format :binary
+      post '/' do
+        { hello: params.hello, postdata: env['rack.input'].read }
+      end
+    end
+
+    resource 'd' do
+      content_type :binary, 'application/octet-stream'
+      default_format :binary
+      post '/' do
+        { hello: params.hello, postdata: env['rack.input'].read }
+      end
     end
   end
 
