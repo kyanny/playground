@@ -176,6 +176,16 @@ class TwitterAPI < Grape::API
         { hello: params.hello, postdata: env['rack.input'].read }
       end
     end
+
+    resource 'e' do
+      params do
+        requires :hello, type: String
+      end
+      post '/' do
+        content_type 'text/csv'
+        body "hello,#{params.hello},#{env['rack.input'].read}"
+      end
+    end
   end
 
   ### another ones

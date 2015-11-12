@@ -19,6 +19,7 @@ task :default do
   sh "curl localhost:9393/x/b -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
   sh "curl localhost:9393/x/c -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
   sh "curl localhost:9393/x/d -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
+  sh "curl localhost:9393/x/e -d hello=world!               -w '\\n%{http_code} content_type=%{content_type}\\n\\n'"
 
   puts '-' * 80
   puts ''
