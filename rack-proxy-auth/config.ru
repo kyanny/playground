@@ -3,12 +3,10 @@ require 'base64'
 
 class MyProxy < Rack::Proxy
   def call(env)
-    return super if env['HTTP_PROXY_AUTHORIZATION'].nil?
-
     credentials = env['HTTP_PROXY_AUTHORIZATION']
-    _, token68 = credentials.split(' ')
+    _, token68 = credentials.to_s.split(' ')
     # assume auth_scheme is "Basic"
-    user, pass = Base64.decode64(token68).split(':')
+    user, pass = Base64.decode64(token68.to_s).split(':')
 
     if user == 'user' && pass == 'pass'
       super
