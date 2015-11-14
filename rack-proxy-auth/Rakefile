@@ -1,0 +1,70 @@
+task :default do
+  require 'socket'
+
+  def wait_ok
+    loop do
+      begin
+        if TCPSocket.open('localhost', 9292)
+          break
+        end
+      rescue
+      end
+    end
+  end
+
+  def wait_ng
+    loop do
+      begin
+        TCPSocket.open('localhost', 9292)
+      rescue
+        break
+      end
+    end
+  end
+
+  def sh(cmd)
+    puts cmd
+    system cmd
+    puts ''
+  end
+
+  def line
+    puts '-' * 80
+    puts ''
+  end
+
+
+  # main1
+  pid = fork do
+    exec "rackup"
+  end
+  wait_ok
+
+  line
+  sh "curl -I -x localhost:9292 -U user:pass example.com"
+  sh "curl -I -x localhost:9292 -U xxx:xxx   example.com"
+
+  Process.kill "TERM", pid
+  wait_ng
+
+
+  # main2
+  pid = fork do
+    exec "rackup"
+  end
+  wait_ok
+
+  line
+  sh "curl -I -x localhost:9292 -U xxx:xxx   example.com"
+  sh "curl -I -x localhost:9292 -U user:pass example.com"
+
+  Process.kill "TERM", pid
+  wait_ng
+
+
+  # teardown
+  puts "done"
+  sleep 1
+  exit
+
+end
