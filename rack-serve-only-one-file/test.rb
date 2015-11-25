@@ -15,7 +15,9 @@ class AppTest < Test::Unit::TestCase
   def test_req
     VCR.use_cassette("local") do
       res = Net::HTTP.get_response(URI('http://localhost:9292'))
-      assert res.ok?
+      assert_kind_of(Net::HTTPSuccess, res)
+      assert_equal 'application/json', res['Content-Type']
+      assert_equal Time.now.utc.httpdate, res['Date']
     end
   end
 end
