@@ -1,0 +1,29 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.3.8)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    hashdiff (0.2.3)
+    power_assert (0.2.2)
+    rack (1.6.4)
+    safe_yaml (1.0.4)
+    test-unit (3.0.9)
+      power_assert
+    vcr (3.0.0)
+    webmock (1.22.3)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rack
+  test-unit
+  vcr
+  webmock
+
+BUNDLED WITH
+   1.10.6
