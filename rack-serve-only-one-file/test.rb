@@ -13,7 +13,7 @@ end
 class AppTest < Test::Unit::TestCase
 
   def test_req
-    VCR.use_cassette("local") do
+    VCR.use_cassette("local", :re_record_interval => 10) do # sec?
       res = Net::HTTP.get_response(URI('http://localhost:9292'))
       assert_kind_of(Net::HTTPSuccess, res)
       assert_equal 'application/json', res['Content-Type']

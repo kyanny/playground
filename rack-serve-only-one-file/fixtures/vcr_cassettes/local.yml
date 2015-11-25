@@ -22,6 +22,8 @@ http_interactions:
     headers:
       Content-Type:
       - application/json
+      Date:
+      - Wed, 25 Nov 2015 08:28:37 GMT
       Transfer-Encoding:
       - chunked
       Connection:
@@ -56,5 +58,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Wed, 25 Nov 2015 08:19:09 GMT
+  recorded_at: Wed, 25 Nov 2015 08:28:37 GMT
 recorded_with: VCR 3.0.0
