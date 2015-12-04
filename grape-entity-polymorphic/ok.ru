@@ -50,7 +50,7 @@ class TwitterAPI < Grape::API
   end
 
   get '/2' do
-    present (ssds + hhds)
+    present (ssds + hdds)
   end
 end
 
