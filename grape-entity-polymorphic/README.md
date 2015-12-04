@@ -1,11 +1,17 @@
 grape-entity-polymorphic (sample code)
 ======================================
 
+When grape's `present` method is called without specifying entity class by `:with` option, grape guesses entity class by given object.
+
+If given object is Array, the first item of Array is used for this guessing logic. ([#present](https://github.com/ruby-grape/grape/blob/v0.13.0/lib/grape/dsl/inside_route.rb#L230), [#entity_class_for_obj](https://github.com/ruby-grape/grape/blob/v0.13.0/lib/grape/dsl/inside_route.rb#L279))
+
+So naive polymorphism is not work. You need to add guard with `:if` option for entity exposure.
+
 ```
 $ bundle install
 ```
 
-## `SSD` class entity with `if` workaround
+## `SSD` class entity with `if` guard
 
 No errors.
 
@@ -35,7 +41,7 @@ Server: thin
 [{"capacity_gb":256,"rpm":null},{"capacity_gb":512,"rpm":null},{"capacity_gb":500,"rpm":5400},{"capacity_gb":2000,"rpm":7200}]
 ```
 
-## `SSD` class entity without `if` workaround
+## `SSD` class entity without `if` guard
 
 Naive polymorphism raises error.
 
