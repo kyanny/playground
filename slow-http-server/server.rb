@@ -11,6 +11,15 @@ opt.on('--write-timeout=VAL')  { |v| @write_timeout  = v.to_f }
 opt.on('--close-timeout=VAL')  { |v| @close_timeout  = v.to_f }
 opt.parse!
 
+body = if ARGV.first
+         File.read(ARGV.first)
+       else
+         "HTTP/1.0 200 OK\r
+Content-Length: 11\r
+\r
+Hello world"
+       end
+
 sleep @new_timeout if @new_timeout
 serv = Socket.new(Socket::AF_INET, Socket::SOCK_STREAM, 0)
 serv.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEPORT, 1)
@@ -26,12 +35,13 @@ puts "Listen http://0.0.0.0:8080"
 sleep @accept_timeout if @accept_timeout
 sock, _ = serv.accept
 if @write_timeout
-  sock.write "H"
+  sock.write body.slice!(0, 1)
   sleep @write_timeout
-  sock.write "TTP/1.0 200 OK\r\n\r\nHello world\r\n"
+  sock.write body
 else
-  sock.write "HTTP/1.0 200 OK\r\n\r\nHello world\r\n"
+  sock.write body
 end
 
 sleep @close_timeout if @close_timeout
 sock.close
+puts "Exit"
