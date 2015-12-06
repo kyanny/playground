@@ -1,0 +1,16 @@
+HTTP/1.1 403 Forbidden
+Date: Sun, 06 Dec 2015 15:40:26 GMT
+Server: Apache
+X-Frame-Options: sameorigin
+Content-Length: 202
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>403 Forbidden</title>
+</head><body>
+<h1>Forbidden</h1>
+<p>You don't have permission to access /
+on this server.</p>
+</body></html>
