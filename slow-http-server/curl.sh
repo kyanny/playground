@@ -19,6 +19,9 @@ for serveropt in --new-wait --bind-wait --listen-wait --accept-wait --write-wait
     for n in `seq 3`; do
       echo "$ curl -isS localhost:8080 $curlopt 1"
       curl -isS localhost:8080 $curlopt 1
+      if [ $? == 0 ]; then
+        break
+      fi
       sleep 1
     done
   done
