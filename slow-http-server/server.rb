@@ -15,9 +15,10 @@ body = if ARGV.first
          File.read(ARGV.first)
        else
          "HTTP/1.0 200 OK\r
-Content-Length: 11\r
+Content-Length: 12\r
 \r
-Hello world"
+Hello world
+"
        end
 
 sleep @new_timeout if @new_timeout
