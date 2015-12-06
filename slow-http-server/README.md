@@ -21,6 +21,9 @@ $ curl -i example.com > resp.txt
 $ ruby server.rb resp.txt
 ```
 
+
+## `curl(1)`
+
 Tests with `curl(1)`'s timeout options.
 
 ```
@@ -191,7 +194,9 @@ Content-Length: 12
 Hello world
 ```
 
-Tests with Ruby's `net/http` timeout options.
+## Ruby's `Net::HTTP`
+
+Tests with Ruby's `Net::HTTP` timeout options.
 
 ```
 $ ./http.sh
