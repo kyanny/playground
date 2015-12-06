@@ -3,12 +3,12 @@ require 'socket'
 require 'optparse'
 
 opt = OptionParser.new
-opt.on('--new-timeout=VAL')    { |v| @new_timeout    = v.to_f }
-opt.on('--bind-timeout=VAL')   { |v| @bind_timeout   = v.to_f }
-opt.on('--listen-timeout=VAL') { |v| @listen_timeout = v.to_f }
-opt.on('--accept-timeout=VAL') { |v| @accept_timeout = v.to_f }
-opt.on('--write-timeout=VAL')  { |v| @write_timeout  = v.to_f }
-opt.on('--close-timeout=VAL')  { |v| @close_timeout  = v.to_f }
+opt.on('--new-wait=VAL')    { |v| @new_wait    = v.to_f }
+opt.on('--bind-wait=VAL')   { |v| @bind_wait   = v.to_f }
+opt.on('--listen-wait=VAL') { |v| @listen_wait = v.to_f }
+opt.on('--accept-wait=VAL') { |v| @accept_wait = v.to_f }
+opt.on('--write-wait=VAL')  { |v| @write_wait  = v.to_f }
+opt.on('--close-wait=VAL')  { |v| @close_wait  = v.to_f }
 opt.parse!
 
 body = if ARGV.first
@@ -21,28 +21,28 @@ Hello world
 "
        end
 
-sleep @new_timeout if @new_timeout
+sleep @new_wait if @new_wait
 serv = Socket.new(Socket::AF_INET, Socket::SOCK_STREAM, 0)
 serv.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEPORT, 1)
 
-sleep @bind_timeout if @bind_timeout
+sleep @bind_wait if @bind_wait
 serv.bind(Socket.sockaddr_in(8080, "0.0.0.0"))
 
-sleep @listen_timeout if @listen_timeout
+sleep @listen_wait if @listen_wait
 serv.listen(5)
 
 puts "Listen http://0.0.0.0:8080"
 
-sleep @accept_timeout if @accept_timeout
+sleep @accept_wait if @accept_wait
 sock, _ = serv.accept
-if @write_timeout
+if @write_wait
   sock.write body.slice!(0, 1)
-  sleep @write_timeout
+  sleep @write_wait
   sock.write body
 else
   sock.write body
 end
 
-sleep @close_timeout if @close_timeout
+sleep @close_wait if @close_wait
 sock.close
 puts "Exit"
