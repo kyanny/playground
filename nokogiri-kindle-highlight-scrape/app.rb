@@ -30,14 +30,14 @@ ignorable = doc.search("##{till} ~ .highlightRow.yourHighlight")
 
   if note
     puts <<TEXT
-> #{text}
+<blockquote>#{text}</blockquote>
 
-Note: #{note}
+<p>#{note}</p>
 
 TEXT
   else
     puts <<TEXT
-> #{text}
+<blockquote>#{text}</blockquote>
 
 TEXT
   end
