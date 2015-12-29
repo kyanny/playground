@@ -1,8 +1,9 @@
+require 'yaml'
 def empty hash
   hash.each do |k,v|
     case
     when v.is_a?(Hash)
-      tilde(v)
+      empty(v)
     else
       hash[k] = nil
     end
