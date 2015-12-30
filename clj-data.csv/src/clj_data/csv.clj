@@ -5,6 +5,11 @@
 (let [filename "usa-states.csv"
       csv (slurp filename)
       rows (csv/read-csv csv)]
+  rows)
+
+(let [filename "usa-states.csv"
+      csv (slurp filename)
+      rows (csv/read-csv csv)]
   (doseq [row rows]
     (let [code (first row)
           name (second row)]
