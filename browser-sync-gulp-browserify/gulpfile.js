@@ -47,6 +47,7 @@ gulp.task('bundle', function () {
  */
 gulp.task('default', ['bundle'], function () {
     browserSync.init({
-        server: "./app"
+        server: "./app",
+        files: ['**/*']
     });
 });
