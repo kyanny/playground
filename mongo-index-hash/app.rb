@@ -4,6 +4,10 @@ require 'pp'
 MongoMapper.database = 'testing'
 class Foo
   include MongoMapper::Document
+end
+Foo.collection.drop
+class Foo
+  include MongoMapper::Document
   key :h, Hash
 end
 Foo.create(h: {a: 1, b: 2})
