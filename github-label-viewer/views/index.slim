@@ -1,0 +1,12 @@
+- if @label.present?
+  h2
+    = "Selected: #{@label.name} "
+    a href="/" Clear
+  p Related labels
+- else
+  p All labels
+- if @labels.present?
+  ul.list-unstyled
+    - @labels.each do |label|
+      li
+        a class="btn btn-default" style="background-color:##{label.color}" href="/#{label.name}" = label.name
