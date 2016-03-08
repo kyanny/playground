@@ -1,12 +1,19 @@
 - if @label.present?
   h2
-    = "Selected: #{@label.name} "
-    a href="/" Clear
-  p Related labels
+    button class="btn btn-default" style="background-color:##{@label.color}" = @label.name
+    | is selected. 
+    a href="/" clear
+  h3 Related labels
 - else
-  p All labels
+  h3 All labels
 - if @labels.present?
   ul.list-unstyled
     - @labels.each do |label|
+      - next if @label&.name == label.name
       li
         a class="btn btn-default" style="background-color:##{label.color}" href="/#{label.name}" = label.name
+        - if @label.present?
+          - @query = URI.escape("is:open is:issue label:#{@label.name} label:#{label.name}")
+        - else
+          - @query = URI.escape("is:open is:issue label:#{label.name}")
+        a href="https://github.com/#{@repo}/issues?q=#{@query}" target="_blank" issues
