@@ -1,3 +1,5 @@
+require 'csv'
+
 class WelcomesController < ApplicationController
   def index
   end
@@ -17,6 +19,12 @@ class WelcomesController < ApplicationController
     data.encode!(Encoding::UTF_8)
     p data
     p data.encoding
+    p '-'*78
+    csv = ::CSV.parse(data, headers: true)
+    p csv.to_a
+    p '-'*78
+    csv = ::CSV.parse(data, headers: true, row_sep: "\r\n")
+    p csv.to_a
     p '-'*78
     redirect_to action: :index
   end
