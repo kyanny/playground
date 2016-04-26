@@ -1,0 +1,63 @@
+.spot {
+    display: inline-block;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+}
+
+/* blue */
+.spot-blue-lighter {
+    background-color: #c9eff7;
+    color: #fafafa
+}
+
+.spot-blue-light {
+    background-color: #90ddef;
+    color: #fafafa
+}
+
+.spot-blue {
+    background-color: #18b3dc;
+    color: #fafafa
+}
+
+.spot-blue-dark {
+    background-color: #0f83ae;
+    color: #fafafa
+}
+
+.spot-blue-darker {
+    background-color: #076085;
+    color: #fafafa
+}
+
+/* live */
+.spot-live-light {
+    background-color: #73d4ca;
+    color: #fafafa
+}
+
+.spot-live {
+    background-color: #05c4a7;
+    color: #fafafa
+}
+
+.spot-live-dark {
+    background-color: #00a286;
+    color: #fafafa
+}
+
+/* video */
+.spot-video-light {
+    background-color: #f099bb;
+    color: #fafafa
+}
+
+.spot-video {
+    background-color: #e95d91;
+    color: #fafafa
+}
+
+.spot-video-dark {
+    background-color: #bf4675;
+    color: #fafafa
+}
