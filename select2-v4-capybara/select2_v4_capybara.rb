@@ -22,14 +22,6 @@ select 'California', from: 'foo'
 sleep 2
 
 ## Search text (waiting ajax call)
-execute_script %Q|
-$(
-  $('.js-example-data-ajax')[0]
-).attr('name', 'bar');
-$(
-  $('.js-example-data-ajax')[0]
-).parents('section').addClass('baz');
-|
 
 # 1. open text field
 within '.js-example-data-ajax + .select2-container' do
