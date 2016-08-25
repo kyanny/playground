@@ -1,15 +1,15 @@
 {
   "version": 3,
   "sources": [
-    "node_modules/browserify/node_modules/browser-pack/_prelude.js",
+    "node_modules/browser-pack/_prelude.js",
     "app.js"
   ],
   "names": [],
-  "mappings": "AAAA;;;ACAA,IAAI,GAAG,GAAG,SAAS,CAAC;AACpB,SAAS",
+  "mappings": "AAAA;;;;;;;;;;;;;;;;;;;;ACiBA,CAAC,CAAC,YAAM;AACN,SAAO,CAAC,GAAG,CAAC,OAAO,CAAC,CAAC;;AAErB,MAAI,MAAM,GAAG,KAAK,CAAC,UAAU,CAAC,MAAM,EAAE,CAAC;AACvC,QAAM,CAAC,WAAW,CAAC,KAAK,EAAE,KAAK,EAAE,CAAC,GAAG,EAAE,EAAC,cAAc,EAAC,kBAAkB,EAAC,EAAE,aAAa,CAAC,CAAC,CAAC;AAC5F,GAAC,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,IAAI,CAAC,UAAU,IAAI,EAAE;AAChC,WAAO,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC;GACnB,CAAC,CAAC;AACH,SAAO,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC;AACnB,GAAC,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,IAAI,CAAC,UAAU,IAAI,EAAE;AAChC,WAAO,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC;GACnB,CAAC,CAAC;AACH,SAAO,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC;AACnB,QAAM,CAAC,OAAO,EAAE,CAAC;AACjB,SAAO,CAAC,GAAG,CAAC,MAAM,CAAC,CAAC;;AAEpB,MAAI,MAAM,GAAG,KAAK,CAAC,UAAU,CAAC,MAAM,EAAE,CAAC;AACvC,QAAM,CAAC,WAAW,CAAC,KAAK,EAAE,KAAK,EAAE,CAAC,GAAG,EAAE,EAAC,cAAc,EAAC,kBAAkB,EAAC,EAAE,cAAc,CAAC,CAAC,CAAC;AAC7F,GAAC,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,IAAI,CAAC,UAAU,IAAI,EAAE;AAChC,WAAO,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC;GACnB,CAAC,CAAC;AACH,SAAO,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC;AACnB,QAAM,CAAC,OAAO,EAAE,CAAC;AACjB,SAAO,CAAC,GAAG,CAAC,MAAM,CAAC,CAAC;CAErB,CAAC,CAAC",
   "file": "generated.js",
   "sourceRoot": "",
   "sourcesContent": [
     "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\"function\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\"Cannot find module '\"+o+\"'\");throw f.code=\"MODULE_NOT_FOUND\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\"function\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})",
-    "let app = 'awesome';\ndebugger;"
+    "// let app = 'awesome';\n\n// class MyClass {\n//     constructor() {\n//         this.name = \"Kensuke\";\n//     }\n//     sayHello() {\n//         console.log(`Hello, ${this.name}!`);\n//     }\n// }\n\n// var me = new MyClass();\n// me.sayHello();\n\n// var f = () => console.log(\"good\");\n// f();\n\n$(() => {\n  console.log('ready');\n\n  var server = sinon.fakeServer.create();\n  server.respondWith('GET', '/ok', [200, {'Content-Type':'application/json'}, '{\"OK\":true}']);\n  $.get('/ok').done(function (data) {\n    console.log(data);\n  });\n  console.log('aaa');\n  $.get('/ok').done(function (data) {\n    console.log(data);\n  });\n  console.log('aaa');\n  server.respond();\n  console.log(server);\n\n  var server = sinon.fakeServer.create();\n  server.respondWith('GET', '/ok', [200, {'Content-Type':'application/json'}, '{\"OK\":false}']);\n  $.get('/ok').done(function (data) {\n    console.log(data);\n  });\n  console.log('bbb');\n  server.respond();\n  console.log(server);\n\n});\n\n// $(function () {\n//   console.log('ready');\n\n//   var server = sinon.fakeServer.create();\n//   server.respondWith('GET', '/ok', [200, {'Content-Type':'application/json'}, '{\"OK\":true}']);\n//   $.get('/ok').done(function (data) {\n//     console.log(data);\n//   });\n//   console.log('aaa');\n//   server.respond();\n//   console.log(server);\n\n//   server.respondWith('GET', '/ok', [200, {'Content-Type':'application/json'}, '{\"OK\":false}']);\n//   $.get('/ok').done(function (data) {\n//     console.log(data);\n//   });\n//   console.log('bbb');\n//   server.respond();\n//   console.log(server);\n// });\n"
   ]
 }

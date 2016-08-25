@@ -4,22 +4,26 @@ $(function(){
   var model = new Backbone.DeepModel({
   });
 
-  model.set('aya.colleges', [{
-    'name': '東京大学'
-  }, {
-    'name': '早稲田大学'
-  }, {
-    'name': '慶応義塾大学'
-  }]);
+  function reset(model) {
+    model.set('aya.colleges', [{
+      'name': '東京大学'
+    }, {
+      'name': '早稲田大学'
+    }, {
+      'name': '慶応義塾大学'
+    }]);
+  }
 
-  console.log(model);
-  var old_aya_colleges = _.clone(model.get('aya.colleges'));
-  console.log(old_aya_colleges);
-  console.log(old_aya_colleges.length);
+  function dump(model) {
+    console.log(_.clone(model.get('aya.colleges')));
+  }
+
+  reset(model);
+  dump(model);
 
   model.unset('aya.colleges.1');
+  dump(model);
 
-  var new_aya_colleges = _.clone(model.get('aya.colleges'));
-  console.log(new_aya_colleges);
-  console.log(new_aya_colleges.length);
+  reset(model);
+  model.deleteNested()
 });

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="shift_jis">
+    <script src="jquery.js"></script>
+    <script src="sha1.js"></script>
+  </head>
+  <body>
+    <h1>こんにちは！</h1>
+    <h2></h2>
+    <input type="text" name="key1" value="ほげ">
+    <input type="text" name="key2" value="ふが">
+    <button>click me</button>
+    <h3></h3>
+  </body>
+  <script>
+   var charset = $('meta').attr('charset');
+   $('h2').text(charset);
+   $('button').click(function() {
+     var secret = 'abc123';
+     var key1 = $('input[name=key1]').val();
+     var key2 = $('input[name=key2]').val();
+     var sig = CybozuLabs.SHA1.calc(key1 + key2 + secret);
+     $('h3').text(sig);
+     var data = {key1: key1, key2: key2, sig: sig};
+     $.post('http://localhost:9292', data, function() {
+       console.log('ok');
+     });
+   })
+  </script>
+</html>
