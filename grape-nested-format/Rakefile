@@ -1,0 +1,3 @@
+task :default do
+  sh "curl -i localhost:9393/base/v1/x/y -d hello=world!"
+end
