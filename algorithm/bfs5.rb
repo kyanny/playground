@@ -1,13 +1,14 @@
 #!/usr/bin/env ruby
 require 'pp'
 
-def bfs(graph, start, goal, route, visited)
+def bfs(graph, start, goal, route, visited, maze)
   found = false
   queue = []
   queue << start
 
   while node = queue.shift
-    p node
+    print_solving_maze(maze, visited)
+
     if node == goal
       found = true
 
@@ -79,6 +80,22 @@ def print_solved_maze(maze, route)
   end
 end
 
+def print_solving_maze(maze, visited)
+  maze.each.with_index do |line, y|
+    line.each.with_index do |c, x|
+      if c == 'S' or c == 'G'
+        print c
+      elsif visited.find { |node| node == [x,y] }
+        print '@'
+      else
+        print c
+      end
+    end
+    print "\n"
+  end
+  print "\n"
+end
+
 maze = DATA.read.split("\n").map { |line|
   line.split(//)
 }
@@ -122,7 +139,7 @@ end
 
 route = []
 visited = []
-found = bfs(graph, start, goal, route, visited)
+found = bfs(graph, start, goal, route, visited, maze)
 if found
   puts 'found'
   print_route(route)
@@ -132,16 +149,12 @@ else
 end
 
 __END__
-**************************
-*S* *                    *
-* * *  *  *************  *
-* *   *    ************  *
-*    *                   *
-************** ***********
-*                        *
-** ***********************
-*      *              G  *
-*  *      *********** *  *
-*    *        ******* *  *
-*       *                *
-**************************
+#########
+#       #
+#**S*** #
+#     * #
+# * *** #
+# *   * #
+# ******#
+#   G   #
+#########
