@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>hello</title>
+    <style>
+    h3.active {
+      background-color: purple;
+    }
+    h3.active a {
+      color: white;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <my-feed
+        v-for="feed in feeds"
+        v-bind:feed="feed"
+        v-bind:index="$index">
+      </my-feed>
+    </div>
+    <script src="dist/build.js"></script>
+  </body>
+</html>
