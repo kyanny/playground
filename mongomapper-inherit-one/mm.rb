@@ -29,6 +29,7 @@ class Membership
 end
 
 class WrapUser < User
+  one :membership, foreign_key: :user_id
 end
 
 wrap_user = WrapUser.create!
