@@ -1,6 +1,0 @@
-source "https://rubygems.org"
-
-gem 'rack'
-gem 'webmock'
-gem 'vcr'
-gem 'test-unit'

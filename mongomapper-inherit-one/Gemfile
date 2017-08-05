@@ -1,9 +1,0 @@
-# frozen_string_literal: true
-source "https://rubygems.org"
-
-# gem "rails"
-gem 'activemodel', '4.2.7.1'
-gem 'mongo_mapper'
-gem 'byebug'
-gem 'ruby-debug-ide'
-gem 'debase'

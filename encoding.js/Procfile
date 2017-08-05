@@ -1,2 +1,0 @@
-frontend: python -m SimpleHTTPServer 8080
-backend: rackup
