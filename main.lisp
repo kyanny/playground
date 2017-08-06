@@ -74,3 +74,77 @@ json
 (assoc :key alist)
 (first (assoc :key alist))
 (rest (assoc :key alist))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; https://learnxinyminutes.com/docs/common-lisp/
+
+10
+:THING
+
+t
+
+(+ 1 2 3 4)
+
+'(4 :foo t)
+
+
+#|
+
+foo bar baz
+
+|#
+
+
+'foo
+
+(intern "AAAA")
+(intern "AAAA")
+(eq 'aaaa (intern "AAAA"))
+
+(intern "aaa")
+
+9999999999999999999999
+#b111
+#o111
+#x111
+
+3.14159s0
+3.14159d0
+1/2
+#C(1 2)                                 ; doesn't work
+
+'(+ 1 2)
+
+(funcall #'+ 1 2 3)
+
+(+ 1 1)
+(- 8 1)
+(* 10 2)
+(expt 2 3)
+(mod 5 2)
+(/ 35 5)
+(/ 1 3)
+(+ #C(1 2) #C(6 -4))
+
+t
+nil
+(not nil)
+(and 0 t)
+(or 0 nil)
+
+#\A
+#\λ
+#\u03BB
+
+"Hello, World!"
+"Benjamin \"foo\" bar"
+
+(concatenate 'string "hello" "world")
+
+(elt "Apple" 0)
+
+(format nil "~a can be ~a" "strings" "formatted")
+(format t "Common Lisp is groovy. Dude.~%")
+
+
