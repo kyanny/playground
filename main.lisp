@@ -59,3 +59,18 @@ json
 
 (assoc :glossary json)
 (cons (assoc :glossary json))
+
+'(1 . 2)
+
+(assoc 1 '(1 . 2))
+
+(let
+    ((alist '((a . 1) (b . 2))))
+  (length alist))
+
+
+(setq alist '((:key . :val)))
+
+(assoc :key alist)
+(first (assoc :key alist))
+(rest (assoc :key alist))
