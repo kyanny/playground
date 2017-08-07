@@ -79,6 +79,11 @@ json
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; https://learnxinyminutes.com/docs/common-lisp/
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 0. Syntax
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 10
 :THING
 
@@ -94,6 +99,11 @@ t
 foo bar baz
 
 |#
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 1. Primitive Datatypes and Operators
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 'foo
@@ -147,4 +157,24 @@ nil
 (format nil "~a can be ~a" "strings" "formatted")
 (format t "Common Lisp is groovy. Dude.~%")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 2. Variables
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defparameter *some-var* 5)
+*some-var*
+
+(defparameter *AあB* t)
+*AあB*
+
+*foobarbaz*
+
+(let ((me "dance with you"))
+  me)
+
+me
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 3. Structs and Collections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
