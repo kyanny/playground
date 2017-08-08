@@ -178,3 +178,50 @@ me
 ;; 3. Structs and Collections
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defstruct dog name breed age)
+(defparameter *rover*
+  (make-dog :name "rover"
+            :breed "collie"
+            :age 5))
+*rover*
+
+(dog-p *rover*)
+(dog-name *rover*)
+(defstruct cat)
+(cat-p 1)
+(cat-name nil)
+(dog-foo *rover*)
+
+(cons 'SUBJECT 'VERB)
+(car (cons 'SUBJECT 'VERB))
+(cdr (cons 'SUBJECT 'VERB))
+
+(cons 1 (cons 2 (cons 3 nil)))
+(list 1 2 3)
+'(1 2 3)
+(quote (1 2 3))
+
+(cons 4 '(1 2 3))
+
+(append '(1 2) '(3 4))
+
+(concatenate 'list '(1 2) '(3 4))
+
+(mapcar #'1+ '(1 2 3))
+(mapcar (lambda (n) (1+ n)) '(1 2 3))
+(mapcar #'+ '(1 2 3) '(10 20 30))
+(mapcar (lambda (n m) (+ n m)) '(1 2 3) '(10 20 30))
+(remove-if-not #'evenp '(1 2 3 4))
+(remove-if-not (lambda (n) (evenp n)) '(1 2 3 4))
+(every #'evenp '(1 2 3 4))
+(every (lambda (n) (evenp n)) '(1 2 3 4))
+(every #'evenp '(2 4 6 8))
+(some #'oddp '(1 2 3 4))
+(some (lambda (n) (oddp n)) '(1 2 3 4))
+(some (lambda (n) (oddp n)) '(2 2 2 2))
+(butlast '(subject verb object))
+(butlast '(subject verb object) 0)
+(butlast '(subject verb object) 1)
+(butlast '(subject verb object) 2)
+(butlast '(subject verb object) 3)
+(butlast '(subject verb object) 4)
