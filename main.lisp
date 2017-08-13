@@ -225,3 +225,73 @@ me
 (butlast '(subject verb object) 2)
 (butlast '(subject verb object) 3)
 (butlast '(subject verb object) 4)
+
+
+;;; Vectors
+
+#(1 2 3)
+
+(concatenate 'vector #(1 2 3) #(4 5 6))
+
+;;; Arrays
+
+(list 1 2)
+(make-array (list 2 2))
+(make-array '(2 2))
+
+(make-array (list 2 2 2))
+
+(make-array '(2))
+(make-array '(2) :initial-element 'unset)
+(make-array '(2) :initial-contents "he")
+
+(aref (make-array (list 2 2 2)) 1 1 1)
+
+
+;;; Adjustable vectors
+
+(defparameter *adjvec* (make-array '(3) :initial-contents '(1 2 3)
+                                        :adjustable t :fill-pointer t))
+
+*adjvec*
+
+(vector-push-extend 4 *adjvec*)
+*adjvec*
+
+(vector-push-extend 5 #(1 2 3))
+
+
+;;; Naively, sets are just lists:
+
+(set-difference '(1 2 3 4) '(4 5 6 7))
+(intersection '(1 2 3 4) '(4 5 6 7))
+(union '(1 2 3 4) '(4 5 6 7))
+(adjoin 4 (list 1 2 3 4))
+(adjoin 5 '(1 2 3 4))
+
+(defparameter *m* (make-hash-table))
+*m*
+
+(setf (gethash 'a *m*) 1)
+*m*
+(gethash 'a *m*)
+
+(gethash 'd *m*)
+
+(gethash 'd *m* :not-found)
+(gethash 'd *m* "hello")
+
+(multiple-value-bind
+      (a b)
+    (gethash 'd *m*)
+  (list a b))
+
+(multiple-value-bind
+      (a b)
+    (gethash 'a *m*)
+  (list a b))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 3. Functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
