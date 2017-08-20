@@ -76,7 +76,7 @@ json
 (rest (assoc :key alist))
 
 
-;;
+;; drakma
 
 '(
   ("Header Name 1" . "Header Value 1")
@@ -113,6 +113,85 @@ json
     (print "----")
     (print headers)
     nil))
+
+
+;; cl-json
+
+(quicklisp:quickload :cl-json)
+
+'((foo 1) (bar (2)) (baz . 3))
+
+(print
+ (json:encode-json
+  '((foo 1) (bar (2)) (baz . 3))))
+
+(print
+ (json:encode-json-to-string
+  '((foo 1) (bar (2)) (baz . 3))))
+
+(let
+    ((data '((foo 1) (bar (2)) (baz . 3))))
+  (print (cl-json:encode-json data)))
+
+(let
+    ((data '((foo 1) (bar (2)) (baz . 3))))
+  (print (cl-json:encode-json-to-string data)))
+
+(let
+    ((data '((foo 1) (bar (2)) (baz . 3))))
+  (let
+      ((ajson (json:encode-json data)))
+    (print (json:decode-json ajson))))
+
+(let
+    ((data '((foo 1) (bar (2)) (baz . 3))))
+  (let
+      ((ajson (json:encode-json-to-string data)))
+    (print (json:decode-json-from-string ajson))))
+
+
+(let ((drakma:*text-content-types* '(("application" . "json"))))
+  (multiple-value-bind (body status headers)
+      (drakma:http-request "https://httpbin.org/get")
+    (print (json:decode-json-from-string body))))
+
+(multiple-value-bind (body status headers)
+    (drakma:http-request "https://httpbin.org/get")
+  (print (json:decode-json body))) ; NG
+
+
+(let ((drakma:*text-content-types* '(("application" . "json"))))
+  (multiple-value-bind (body status headers)
+      (drakma:http-request "https://httpbin.org/get")
+    (json:json-bind (*args.origin*) body)))
+
+
+;; jonathan
+
+(ql:quickload :jonathan)
+
+(jojo:to-json '(:foo 1 :bar (2) (:baz 3) (:quz (4))))
+
+(let
+    ((ajson (jojo:to-json '(:foo 1 :bar (2) (:baz 3) (:quz (4))))))
+  (jojo:parse ajson))
+
+("FOO" 1 "BAR" (2) (:BAZ 3) (:QUZ (4)))
+
+(let
+    ((ajson (jojo:to-json '(:foo 1 :bar (2) (:baz 3) (:quz (4))))))
+  (jojo:parse ajson :as :alist))
+
+(jojo:to-json '((:foo 1) (:bar 2) (:baz 3)))
+(jojo:parse (jojo:to-json '(:foo 1 :bar 2 :baz 3)) :as :alist)
+
+(assoc :|"FOO"| (jojo:parse (jojo:to-json '(:foo 1 :bar 2 :baz 3)) :as :alist))
+;; なんでうまくいかないんだろー
+
+'((:foo 1))
+
+(assoc :foo '((:foo 1)))
+
 
 ;;
 
