@@ -76,6 +76,47 @@ json
 (rest (assoc :key alist))
 
 
+;;
+
+'(
+  ("Header Name 1" . "Header Value 1")
+  ("Header Name 2" . "Header Value 2")
+  )
+
+(quicklisp:quickload :drakma)
+
+(let ((drakma:*text-content-types* '(("application" . "json"))))
+  (drakma:http-request "https://httpbin.org/get"))
+
+(let ((drakma:*text-content-types* '(("application" . "json"))))
+  (drakma:http-request "https://httpbin.org/get"
+                       :user-agent "my user agent"
+                       :additional-headers '(("X-Hello-World" . "Hello World"))))
+
+(let* ((drakma:*text-content-types* '(("application" . "json")))
+       (token "helloworld")
+       (authorization (concatenate 'string "token" " " token)))
+  (drakma:http-request "https://httpbin.org/get"
+                       :user-agent "my user agent"
+                       :additional-headers `(("Authorization" . ,authorization))))
+
+(let* ((drakma:*text-content-types* '(("application" . "json")))
+       (token "helloworld")
+       (authorization (concatenate 'string "token" " " token)))
+  (multiple-value-bind (body status headers)
+      (drakma:http-request "https://httpbin.org/get"
+                           :user-agent "my user agent"
+                           :additional-headers `(("Authorization" . ,authorization)))
+    (print body)
+    (print "----")
+    (print status)
+    (print "----")
+    (print headers)
+    nil))
+
+;;
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; https://learnxinyminutes.com/docs/common-lisp/
 
